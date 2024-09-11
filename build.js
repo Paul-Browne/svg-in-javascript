@@ -11,7 +11,7 @@ await esbuild.build({
     entryPoints: ['scripts/svg.js'],
     bundle: false,
     minify: true,
-    sourcemap: false,
+    sourcemap: true,
     splitting: false,
     treeShaking: false,
     format: "esm",
@@ -19,16 +19,16 @@ await esbuild.build({
     outfile: 'esm.js'
 })
 
-await esbuild.build({
-    stdin: {
-        contents: 'import a from "./scripts/svg.js";module.exports = a;',
-        resolveDir: '.'
-    },
-    bundle: true,
-    minify: true,
-    sourcemap: false,
-    format: "iife",
-    target: "esnext",
-    globalName: "svgjs",
-    outfile: 'iife.js'
-})
+// await esbuild.build({
+//     stdin: {
+//         contents: 'import a from "./scripts/svg.js";module.exports = a;',
+//         resolveDir: '.'
+//     },
+//     bundle: true,
+//     minify: true,
+//     sourcemap: false,
+//     format: "iife",
+//     target: "esnext",
+//     globalName: "svgjs",
+//     outfile: 'iife.js'
+// })

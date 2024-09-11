@@ -1,4 +1,4 @@
-const allElements = ['animate','animateMotion','animateTransform','circle','clipPath','defs','desc','ellipse','feBlend','feColorMatrix','feComponentTransfer','feComposite','feConvolveMatrix','feDiffuseLighting','feDisplacementMap','feDistantLight','feDropShadow','feFlood','feFuncA','feFuncB','feFuncG','feFuncR','feGaussianBlur','feImage','feMerge','feMergeNode','feMorphology','feOffset','fePointLight','feSpecularLighting','feSpotLight','feTile','feTurbulence','filter','foreignObject','g','image','line','linearGradient','marker','mask','metadata','mpath','path','pattern','polygon','polyline','radialGradient','rect','set','stop','svg','switch','symbol','text','textPath','tspan','use','view'];
+// manually minify from https://minify-js.com/
 
 const argumentative = (...args) => {
     let content = [];
@@ -19,12 +19,9 @@ const argumentative = (...args) => {
     }
 }
 
-const svgjs = allElements.reduce((acc, element) => {
-    acc[element] = (...args) => {
-        const { content, attributes } = argumentative(...args);
-        return `<${element}${attributes}>${content}</${element}>`;
-    }
-    return acc;
-}, {})
-
-export default svgjs
+// all svg elements are listed here except 'switch' which is a reserved keyword in javascript
+export const [a,animate,animateMotion,animateTransform,circle,clipPath,defs,desc,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,image,line,linearGradient,marker,mask,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,set,script,stop,style,svg,symbol,text,title,textPath,tspan,use,view,fragment] = ['a','animate','animateMotion','animateTransform','circle','clipPath','defs','desc','ellipse','feBlend','feColorMatrix','feComponentTransfer','feComposite','feConvolveMatrix','feDiffuseLighting','feDisplacementMap','feDistantLight','feDropShadow','feFlood','feFuncA','feFuncB','feFuncG','feFuncR','feGaussianBlur','feImage','feMerge','feMergeNode','feMorphology','feOffset','fePointLight','feSpecularLighting','feSpotLight','feTile','feTurbulence','filter','foreignObject','g','image','line','linearGradient','marker','mask','metadata','mpath','path','pattern','polygon','polyline','radialGradient','rect','script','set','stop','style','svg','switch','symbol','text','title','textPath','tspan','use','view','fragment'].map(element => (...args) => {
+    const { content, attributes } = argumentative(...args);
+    if(element == "fragment") return content
+    return `<${element}${attributes}>${content}</${element}>`;
+})
