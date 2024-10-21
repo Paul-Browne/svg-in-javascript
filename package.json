@@ -1,6 +1,6 @@
 {
   "name": "svg-in-javascript",
-  "version": "2.0.2",
+  "version": "2.0.5",
   "description": "SVG.JS is a library for easily creating SVG in JavaScript, for both the backend and the frontend.",
   "main": "esm.js",
   "type": "module",
